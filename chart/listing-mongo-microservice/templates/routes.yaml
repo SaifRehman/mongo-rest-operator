@@ -1,0 +1,23 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  annotations:
+    openshift.io/generated-by: OpenShiftWebConsole
+    openshift.io/host.generated: 'true'
+  name: todoapp
+  namespace: kubeapp
+spec:
+  host: todoapp-kubeapp.192.168.64.4.nip.io
+  port:
+    targetPort: 7000
+  to:
+    kind: Service
+    name: todo
+    weight: 100
+  wildcardPolicy: None
+status:
+  ingress:
+    - conditions:
+      host: todoapp-kubeapp.192.168.64.4.nip.io
+      routerName: router
+      wildcardPolicy: None

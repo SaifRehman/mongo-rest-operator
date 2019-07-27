@@ -1,8 +1,8 @@
 replicaCount: 2
 
 metadata:
- name: todosvc 
- label: todosvc
+ name: todo 
+ label: todo
 readinessProbe:
   path: /healthz
   port: 7000
@@ -17,8 +17,8 @@ livenessProbe:
   timeoutSeconds: 2
   periodSeconds: 10
 image:
-  name: todosvc
-  imageName: "mycluster.icp:8500/default/listing-mongo-microservice" 
+  name: todoapp:latest
+  imageName: "kubeapp/todoapp:latest" 
   imagePullPolicy: Always
   ports:
     containerPort: 7000
@@ -34,6 +34,8 @@ image:
     preStop:
       command: ["/bin/bash", "-c", "sleep 20"]
 
+imagestream:
+  name:  todoapp
 
 envOfSecrets:
   envMONGOUSERNAME:
@@ -62,7 +64,7 @@ envOfConfigmaps:
 
 hpa:
   metadata:
-    name: todosvcmicroservicehpa
+    name: todomicroservicehpa
   spec:
     maxReplicas: 10
     minReplicas: 2
@@ -75,18 +77,18 @@ hpa:
     memory:
       targetAverageUtilization: 50
   scaleTargetRef:  
-    name: todosvc
+    name: todo
 
 service:
   serviceMetadata:
-    name: todosvc
+    name: todo
     labels:
-      app: todosvc
+      app: todo
   selector:
-    selectorName: todosvc
+    selectorName: todo
   servicePortConfiguration:
     protocol: TCP
-    name: todosvc
+    name: todo
     type: ClusterIP
     port: 7000
     targetPort: 7000

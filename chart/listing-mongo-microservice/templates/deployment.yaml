@@ -1,5 +1,5 @@
-apiVersion: extensions/v1beta1
-kind: Deployment
+apiVersion: "v1"
+kind: DeploymentConfig
 metadata:
  name: {{ .Values.metadata.name }} 
 spec:
@@ -9,13 +9,25 @@ spec:
   rollingUpdate:
     maxSurge: {{ .Values.image.maxSurge }} 
     maxUnavailable: {{ .Values.image.maxUnavailable }} 
+ triggers:
+   - type: "ConfigChange"
+   - type: "ImageChange" 
+     imageChangeParams:
+       automatic: true
+       containerNames:
+         - "todoapp"
+       from:
+         kind: "ImageStreamTag"
+         name: "todoapp:latest"
+  strategy:
+   type: "Rolling"
+  paused: false   
  template:
    metadata:
      name: {{ .Values.metadata.name }} 
      labels:
        app: {{ .Values.metadata.label }} 
    spec:
-     containers:
      containers:
        - name: {{ .Values.image.name }} 
          image: {{ .Values.image.imageName }} 

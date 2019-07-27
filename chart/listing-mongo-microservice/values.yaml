@@ -17,8 +17,8 @@ livenessProbe:
   timeoutSeconds: 2
   periodSeconds: 10
 image:
-  name: todoapp:latest
-  imageName: "kubeapp/todoapp:latest" 
+  name: "todoapp"
+  imageName: "todoapp" 
   imagePullPolicy: Always
   ports:
     containerPort: 7000

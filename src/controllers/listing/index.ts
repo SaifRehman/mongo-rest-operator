@@ -1,9 +1,9 @@
 import { Router } from "express";
 import { Request, Response, NextFunction } from "express";
-import { FlightController } from "../listing/lib/controllers/crmController";
+import { TodoController } from "../listing/lib/controllers/crmController";
 import "reflect-metadata";
 class ListingMongoController {
-  public flightController: FlightController = new FlightController();
+  public todoController: TodoController = new TodoController();
   public router: Router;
 
   constructor() {
@@ -17,51 +17,51 @@ class ListingMongoController {
     });
 
     this.router.get(
-      "/listFlights",
+      "/listTodo",
       (req: Request, res: Response, next: NextFunction) => {
         next();
       },
-      this.flightController.getFlights
+      this.todoController.getTodo
     );
 
     this.router.post(
-      "/listFlights",
+      "/listTodo",
       (req: Request, res: Response, next: NextFunction) => {
         next();
       },
-      this.flightController.addNewFlight
+      this.todoController.addNewTodo
     );
 
     this.router.post(
-      "/searchFlights",
+      "/searchTodo",
       (req: Request, res: Response, next: NextFunction) => {
         next();
       },
-      this.flightController.searchFlights
+      this.todoController.searchTodo
     );
 
     this.router.get(
-      "/listFlights/:ID",
+      "/listTodo/:ID",
       (_, res: Response, next: NextFunction) => {
         next();
       },
-      this.flightController.getFlightById
+      this.todoController.getTodoById
     );
 
     this.router.put(
-      "/listFlights/:ID",
+      "/listTodo/:ID",
       (_, res: Response, next: NextFunction) => {
         next();
       },
-      this.flightController.updateFlight
+      this.todoController.updateTodo
     );
 
     this.router.delete(
-      "/listFlights/:ID",
+      "/listTodo/:ID",
       (_, res: Response, next: NextFunction) => {
         next();
       },
-      this.flightController.deleteFlight
+      this.todoController.deleteTodo
     );
   }
 }

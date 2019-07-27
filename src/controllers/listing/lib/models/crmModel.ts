@@ -10,7 +10,7 @@ export const TodoSchema = new Schema({
         type: String
     },
     Completed:{
-        type: String
+        type: Boolean
     },
     Time: {
         type: String

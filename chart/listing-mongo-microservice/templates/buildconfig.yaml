@@ -1,6 +1,7 @@
 apiVersion: build.openshift.io/v1
 kind: BuildConfig
 metadata:
+  name: "todoapp"
   annotations:
     openshift.io/generated-by: OpenShiftWebConsole
 spec:

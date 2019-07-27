@@ -1,8 +1,8 @@
 replicaCount: 2
 
 metadata:
- name: listingsvc 
- label: listingsvc
+ name: todosvc 
+ label: todosvc
 readinessProbe:
   path: /healthz
   port: 7000
@@ -17,7 +17,7 @@ livenessProbe:
   timeoutSeconds: 2
   periodSeconds: 10
 image:
-  name: listingsvc
+  name: todosvc
   imageName: "mycluster.icp:8500/default/listing-mongo-microservice" 
   imagePullPolicy: Always
   ports:
@@ -62,7 +62,7 @@ envOfConfigmaps:
 
 hpa:
   metadata:
-    name: listingsvcmicroservicehpa
+    name: todosvcmicroservicehpa
   spec:
     maxReplicas: 10
     minReplicas: 2
@@ -75,18 +75,18 @@ hpa:
     memory:
       targetAverageUtilization: 50
   scaleTargetRef:  
-    name: listingsvc
+    name: todosvc
 
 service:
   serviceMetadata:
-    name: listingsvc
+    name: todosvc
     labels:
-      app: listingsvc
+      app: todosvc
   selector:
-    selectorName: listingsvc
+    selectorName: todosvc
   servicePortConfiguration:
     protocol: TCP
-    name: listingsvc
+    name: todosvc
     type: ClusterIP
     port: 7000
     targetPort: 7000

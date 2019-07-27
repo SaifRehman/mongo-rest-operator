@@ -39,31 +39,24 @@ envOfSecrets:
   envMONGOUSERNAME:
     name: MONGOUSERNAME
     secretKeyRef:
-      name: mysecret
+      name: todomicroservice
       key: MONGOUSERNAME
   envMONGOPASSWORD:
     name: MONGOPASSWORD
     secretKeyRef:
-      name: mysecret
+      name: todomicroservice
       key: MONGOPASSWORD
-
-ingress:
-  metadeta:
-    name: listingsvc
-  path: /listingsvc
-  serviceName: listingsvc
-  servicePort: 7000
 
 envOfConfigmaps:
   envMONGOPORT:
     name: MONGOPORT
     configMapKeyRef:
-      name: env-database
+      name: todomicroservice
       key: MONGOPORT
   envHOSTNAMEMONGODB:
     name: HOSTNAMEMONGODB
     configMapKeyRef:
-      name: env-database
+      name: todomicroservice
       key: HOSTNAMEMONGODB
 
 

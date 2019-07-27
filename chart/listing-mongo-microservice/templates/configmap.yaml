@@ -2,7 +2,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: todomicroservice
-  namespace: monocular
+  namespace: kubeapp
 data:
   MONGOPORT: '27017'
   HOSTNAMEMONGODB: 'mongodb.kubeapp'

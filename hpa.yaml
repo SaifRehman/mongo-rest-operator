@@ -1,16 +1,23 @@
-apiVersion: autoscaling/v1
-kind: HorizontalPodAutoscaler
+apiVersion: route.openshift.io/v1
+kind: Route
 metadata:
-  name: listingsvc
-  namespace: default
+  annotations:
+    openshift.io/generated-by: OpenShiftWebConsole
+    openshift.io/host.generated: 'true'
+  name: todoapp
+  namespace: kubeapp
 spec:
-  maxReplicas: 10
-  minReplicas: 1
-  scaleTargetRef:
-    apiVersion: extensions/v1beta1
-    kind: Deployment
-    name: listingsvc
-  targetCPUUtilizationPercentage: 50
-
-
-
+  host: todoapp-kubeapp.console.9.30.210.207.nip.io
+  port:
+    targetPort: 7000
+  to:
+    kind: Service
+    name: todo
+    weight: 100
+  wildcardPolicy: None
+status:
+  ingress:
+    - conditions:
+      host: todoapp-kubeapp.console.9.30.210.207.nip.io
+      routerName: router
+      wildcardPolicy: None

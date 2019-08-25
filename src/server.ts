@@ -6,8 +6,8 @@ var mongoose = require('mongoose');
 mongoose.Promise = Promise;
 class App {
   public express: express.Application;
-  // public mongoUrl: string = 'mongodb://'+process.env.MONGOUSERNAME+':'+process.env.MONGOPASSWORD+'@'+process.env.HOSTNAMEMONGODB+':'+process.env.MONGOPORT+'/admin';
-  public mongoUrl: string = "mongodb://userLP1:jApd8sDsHryLvTvq@192.168.64.4:31988/sampledb"
+  public mongoUrl: string = 'mongodb://'+process.env.MONGOUSERNAME+':'+process.env.MONGOPASSWORD+'@'+process.env.HOSTNAMEMONGODB+':'+process.env.MONGOPORT+'/sampledb';
+  // public mongoUrl: string = "mongodb://admin:admin@mongodb.kubeapp:7000/sampledb"
 
   constructor() {
     this.express = express();

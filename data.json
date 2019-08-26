@@ -1,0 +1,14 @@
+    Username: {
+        type: String
+    },
+    Task: {
+        type: String
+    },
+    Completed:{
+        type: Boolean
+    },
+    Time: {
+        type: String
+    }
+    
+}

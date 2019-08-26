@@ -3,8 +3,11 @@ kind: ConfigMap
 metadata:
   labels:
     app: "{{ .Values.metadata.name }}"
-  name: todomicroservice
+  name: todo-appmicroservice
   namespace: "{{ .Values.namespace }}"
 data:
   MONGOPORT: "{{ .Values.mongodb.port }}"
   HOSTNAMEMONGODB: "{{ .Values.mongodb.host }}"
+  ENDPOINT: "{{ .Values.mongodb.endpoint }}"
+  DB: "{{ .Values.mongodb.db }}"
+  SCHEMA: "{{ .Values.mongodb.schema }}"

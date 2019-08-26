@@ -17,7 +17,7 @@ class ListingMongoController {
     });
 
     this.router.get(
-      "/listTodo",
+      "/"+ process.env.ENDPOINT,
       (req: Request, res: Response, next: NextFunction) => {
         next();
       },
@@ -25,23 +25,15 @@ class ListingMongoController {
     );
 
     this.router.post(
-      "/listTodo",
+      "/"+ process.env.ENDPOINT,
       (req: Request, res: Response, next: NextFunction) => {
         next();
       },
       this.todoController.addNewTodo
     );
 
-    this.router.post(
-      "/searchTodo",
-      (req: Request, res: Response, next: NextFunction) => {
-        next();
-      },
-      this.todoController.searchTodo
-    );
-
     this.router.get(
-      "/listTodo/:ID",
+      "/"+ process.env.ENDPOINT+"/:ID",
       (_, res: Response, next: NextFunction) => {
         next();
       },
@@ -49,7 +41,7 @@ class ListingMongoController {
     );
 
     this.router.put(
-      "/listTodo/:ID",
+      "/"+ process.env.ENDPOINT+"/:ID",
       (_, res: Response, next: NextFunction) => {
         next();
       },
@@ -57,7 +49,7 @@ class ListingMongoController {
     );
 
     this.router.delete(
-      "/listTodo/:ID",
+      "/"+ process.env.ENDPOINT+"/:ID",
       (_, res: Response, next: NextFunction) => {
         next();
       },

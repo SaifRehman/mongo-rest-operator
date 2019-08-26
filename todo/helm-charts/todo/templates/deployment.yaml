@@ -30,6 +30,9 @@ spec:
     spec:
       containers:
         - name: {{ .Values.image.name }} 
+          volumeMounts:
+          - name: config-volume
+            mountPath: /etc/config
           image: {{ .Values.image.imageName }} 
           readinessProbe:
             httpGet: 
@@ -80,5 +83,27 @@ spec:
                 configMapKeyRef:
                   name: {{ .Values.envOfConfigmaps.envHOSTNAMEMONGODB.configMapKeyRef.name }}
                   key: {{ .Values.envOfConfigmaps.envHOSTNAMEMONGODB.configMapKeyRef.key }}
+            - name: {{ .Values.envOfConfigmaps.envENDPOINT.name }} 
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ .Values.envOfConfigmaps.envENDPOINT.configMapKeyRef.name }}
+                  key: {{ .Values.envOfConfigmaps.envENDPOINT.configMapKeyRef.key }}
+            - name: {{ .Values.envOfConfigmaps.envDB.name }} 
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ .Values.envOfConfigmaps.envDB.configMapKeyRef.name }}
+                  key: {{ .Values.envOfConfigmaps.envDB.configMapKeyRef.key }}
+            - name: {{ .Values.envOfConfigmaps.envSCHEMA.name }} 
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ .Values.envOfConfigmaps.envSCHEMA.configMapKeyRef.name }}
+                  key: {{ .Values.envOfConfigmaps.envSCHEMA.configMapKeyRef.key }}
           ports:
             - containerPort: {{ .Values.image.ports.containerPort }} 
+      volumes:
+        - name: config-volume
+          configMap:
+            name: mount
+            items:
+            - key: data.json
+              path: keys.json

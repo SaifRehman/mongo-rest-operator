@@ -1,5 +1,5 @@
 replicaCount: 2
-
+namespace: "kubeapp"
 metadata:
  name: todo 
  label: todo
@@ -9,7 +9,8 @@ readinessProbe:
   initialDelaySeconds: 10
   timeoutSeconds: 2
   periodSeconds: 10
-
+cm:
+  data: '{"Username":{"type":String},"Task":{"type":String},"Completed":{"type":Boolean},"Time":{"type":String}}'
 livenessProbe:
   path: /healthz
   port: 7000

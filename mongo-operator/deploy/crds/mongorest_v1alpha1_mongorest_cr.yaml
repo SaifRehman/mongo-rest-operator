@@ -11,12 +11,12 @@ spec:
     username: "YWRtaW4="
     password: "YWRtaW4="
     secret: "aGVsbG8="
-    endpoint: "listTodo"
+    endpoint: "studentGrade"
     db: "sampledb"
-    schema: "Todo"
+    schema: "Student"
   buildconfig:
     uri: "https://github.com/SaifRehman/openshift-microservice.git"
   routes:
-    host: "mongo-rest-kubeapp.apps.192.168.64.17.nip.io"
+    host: "student-grade-kubeapp.apps.192.168.64.17.nip.io"
   cm:
-    data: '{"Username":{"type":String},"Task":{"type":String},"Completed":{"type":Boolean},"Time":{"type":String}}'
+    data: '{"StudentID":{"type":String},"StudentName":{"type":String},"Grade":{"type":String}}'

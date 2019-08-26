@@ -14,8 +14,8 @@ mongodb:
 cm:
   data: '{"Username":{"type":String},"Task":{"type":String},"Completed":{"type":Boolean},"Time":{"type":String}}'
 metadata:
- name: todo-app 
- label: todo-app
+ name: mongo-rest 
+ label: mongo-rest
 readinessProbe:
   path: /healthz
   port: 7000
@@ -30,8 +30,8 @@ livenessProbe:
   timeoutSeconds: 2
   periodSeconds: 10
 image:
-  name: "todo-app"
-  imageName: "todo-app" 
+  name: "mongo-rest"
+  imageName: "mongo-rest" 
   imagePullPolicy: Always
   ports:
     containerPort: 7000
@@ -48,52 +48,49 @@ image:
       command: ["/bin/bash", "-c", "sleep 20"]
 
 imagestream:
-  name:  todo-app
+  name:  mongo-rest
 
 envOfSecrets:
   envMONGOUSERNAME:
     name: MONGOUSERNAME
     secretKeyRef:
-      name: todo-appmicroservice
+      name: mongo-rest
       key: MONGOUSERNAME
   envMONGOPASSWORD:
     name: MONGOPASSWORD
     secretKeyRef:
-      name: todo-appmicroservice
+      name: mongo-rest
       key: MONGOPASSWORD
 
 envOfConfigmaps:
   envMONGOPORT:
     name: MONGOPORT
     configMapKeyRef:
-      name: todo-appmicroservice
+      name: mongo-rest
       key: MONGOPORT
   envHOSTNAMEMONGODB:
     name: HOSTNAMEMONGODB
     configMapKeyRef:
-      name: todo-appmicroservice
+      name: mongo-rest
       key: HOSTNAMEMONGODB
   envENDPOINT:
     name: ENDPOINT
     configMapKeyRef:
-      name: todo-appmicroservice
+      name: mongo-rest
       key: ENDPOINT
   envDB:
     name: DB
     configMapKeyRef:
-      name: todo-appmicroservice
+      name: mongo-rest
       key: DB
   envSCHEMA:
     name: SCHEMA
     configMapKeyRef:
-      name: todo-appmicroservice
+      name: mongo-rest
       key: SCHEMA
-  
-
-
 hpa:
   metadata:
-    name: todo-appmicroservicehpa
+    name: mongo-resthpa
   spec:
     maxReplicas: 10
     minReplicas: 2
@@ -106,40 +103,40 @@ hpa:
     memory:
       targetAverageUtilization: 50
   scaleTargetRef:  
-    name: todo-app
+    name: mongo-rest
 
 service:
   serviceMetadata:
-    name: todo-app
+    name: mongo-rest
     labels:
-      app: todo-app
+      app: mongo-rest
   selector:
-    selectorName: todo-app
+    selectorName: mongo-rest
   servicePortConfiguration:
     protocol: TCP
-    name: todo-app
+    name: mongo-rest
     type: ClusterIP
     port: 7000
     targetPort: 7000
 
 
 imagestream:
-  name:  todo-app
-  label: todo-app
+  name:  mongo-rest
+  label: mongo-rest
 
 buildconfig:
   uri: "https://github.com/SaifRehman/openshift-microservice.git"
   branch: "master"
-  name: "todo-app"
-  imagename: "todo-app:latest"
+  name: "mongo-rest"
+  imagename: "mongo-rest:latest"
   secret1: $(head -c 24 /dev/random | base64)
   secret2: $(head -c 24 /dev/random | base64)
 
 
 routes:
-  host: "todo-app-kubeapp.apps.192.168.64.16.nip.io"
+  host: "mongo-rest-kubeapp.apps.192.168.64.16.nip.io"
   targetPort: 7000
-  name: todo-app
+  name: mongo-rest
   weight: 100
 
 

@@ -1,16 +1,22 @@
-apiVersion: todo.ibm.com/v1alpha1
-kind: Todo
+apiVersion: mongorest.ibm.com/v1alpha1
+kind: Mongorest
 metadata:
-  name: example-todo
+  name: example-mongorest
+spec:
   replicaCount: 3
   namespace: "kubeapp"
   mongodb: 
     host: "mongodb.kubeapp"
+    port: "27017"
     username: "YWRtaW4="
     password: "YWRtaW4="
     secret: "aGVsbG8="
-    endpoint: "reporting"
+    endpoint: "listTodo"
+    db: "sampledb"
+    schema: "Todo"
   buildconfig:
     uri: "https://github.com/SaifRehman/openshift-microservice.git"
+  routes:
+    host: "mongo-rest-kubeapp.apps.192.168.64.17.nip.io"
   cm:
     data: '{"Username":{"type":String},"Task":{"type":String},"Completed":{"type":Boolean},"Time":{"type":String}}'

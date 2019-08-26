@@ -1,0 +1,5 @@
+---
+- version: v1alpha1
+  group: mongorest.ibm.com
+  kind: Mongorest
+  chart: /opt/helm/helm-charts/mongorest

@@ -2,7 +2,7 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
 metadata:
   creationTimestamp: null
-  name: todo
+  name: mongo-operator
 rules:
 - apiGroups:
   - ""
@@ -40,7 +40,7 @@ rules:
 - apiGroups:
   - apps
   resourceNames:
-  - todo
+  - mongo-operator
   resources:
   - deployments/finalizers
   verbs:
@@ -58,7 +58,7 @@ rules:
   verbs:
   - get
 - apiGroups:
-  - todo.ibm.com
+  - mongorest.ibm.com
   resources:
   - '*'
   verbs:

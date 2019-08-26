@@ -1,14 +1,14 @@
 apiVersion: apiextensions.k8s.io/v1beta1
 kind: CustomResourceDefinition
 metadata:
-  name: todos.todo.ibm.com
+  name: mongorests.mongorest.ibm.com
 spec:
-  group: todo.ibm.com
+  group: mongorest.ibm.com
   names:
-    kind: Todo
-    listKind: TodoList
-    plural: todos
-    singular: todo
+    kind: Mongorest
+    listKind: MongorestList
+    plural: mongorests
+    singular: mongorest
   scope: Namespaced
   subresources:
     status: {}

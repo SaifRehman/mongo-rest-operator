@@ -10,6 +10,7 @@ mongodb:
   endpoint: "listTodo"
   db: "sampledb"
   schema: "Todo"
+  path: "/etc/config/keys.json"
 
 cm:
   data: '{"Username":{"type":String},"Task":{"type":String},"Completed":{"type":Boolean},"Time":{"type":String}}'
@@ -88,6 +89,11 @@ envOfConfigmaps:
     configMapKeyRef:
       name: mongo-rest
       key: SCHEMA
+  envPATH:
+    name: PATH
+    configMapKeyRef:
+      name: mongo-rest
+      key: PATH
 hpa:
   metadata:
     name: mongo-resthpa
@@ -134,7 +140,7 @@ buildconfig:
 
 
 routes:
-  host: "mongo-rest-kubeapp.apps.192.168.64.16.nip.io"
+  host: "mongo-rest-kubeapp.apps.192.168.64.17.nip.io"
   targetPort: 7000
   name: mongo-rest
   weight: 100

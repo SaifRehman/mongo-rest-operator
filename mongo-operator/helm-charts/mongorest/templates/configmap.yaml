@@ -11,3 +11,4 @@ data:
   ENDPOINT: "{{ .Values.mongodb.endpoint }}"
   DB: "{{ .Values.mongodb.db }}"
   SCHEMA: "{{ .Values.mongodb.schema }}"
+  PATH: "{{ .Values.mongodb.path }}"

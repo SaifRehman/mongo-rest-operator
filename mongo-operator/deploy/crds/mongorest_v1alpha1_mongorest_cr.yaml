@@ -14,6 +14,7 @@ spec:
     endpoint: "studentGrade"
     db: "sampledb"
     schema: "Student"
+    path: "/etc/config/keys.json"
   buildconfig:
     uri: "https://github.com/SaifRehman/openshift-microservice.git"
   routes:

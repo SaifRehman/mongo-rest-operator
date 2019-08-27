@@ -30,9 +30,6 @@ spec:
     spec:
       containers:
         - name: {{ .Values.image.name }} 
-          volumeMounts:
-          - name: config-volume
-            mountPath: "/app/src/controllers/listing/lib/models"
           image: {{ .Values.image.imageName }} 
           readinessProbe:
             httpGet: 
@@ -66,49 +63,42 @@ spec:
             - name: {{ .Values.envOfSecrets.envMONGOUSERNAME.name }} 
               valueFrom:
                 secretKeyRef:
-                  name: {{ .Values.envOfSecrets.envMONGOUSERNAME.secretKeyRef.name }} 
+                  name: {{ .Values.metadata.name }} 
                   key: {{ .Values.envOfSecrets.envMONGOUSERNAME.secretKeyRef.key }} 
             - name: {{ .Values.envOfSecrets.envMONGOPASSWORD.name }} 
               valueFrom:
                 secretKeyRef:
-                  name: {{ .Values.envOfSecrets.envMONGOPASSWORD.secretKeyRef.name }} 
+                  name: {{ .Values.metadata.name }} 
                   key: {{ .Values.envOfSecrets.envMONGOPASSWORD.secretKeyRef.key }} 
             - name: {{ .Values.envOfConfigmaps.envMONGOPORT.name }} 
               valueFrom:
                 configMapKeyRef:
-                  name: {{ .Values.envOfConfigmaps.envMONGOPORT.configMapKeyRef.name }}
+                  name: {{ .Values.metadata.name }} 
                   key: {{ .Values.envOfConfigmaps.envMONGOPORT.configMapKeyRef.key }}
             - name: {{ .Values.envOfConfigmaps.envHOSTNAMEMONGODB.name }} 
               valueFrom:
                 configMapKeyRef:
-                  name: {{ .Values.envOfConfigmaps.envHOSTNAMEMONGODB.configMapKeyRef.name }}
+                  name: {{ .Values.metadata.name }} 
                   key: {{ .Values.envOfConfigmaps.envHOSTNAMEMONGODB.configMapKeyRef.key }}
             - name: {{ .Values.envOfConfigmaps.envENDPOINT.name }} 
               valueFrom:
                 configMapKeyRef:
-                  name: {{ .Values.envOfConfigmaps.envENDPOINT.configMapKeyRef.name }}
+                  name: {{ .Values.metadata.name }} 
                   key: {{ .Values.envOfConfigmaps.envENDPOINT.configMapKeyRef.key }}
             - name: {{ .Values.envOfConfigmaps.envDB.name }} 
               valueFrom:
                 configMapKeyRef:
-                  name: {{ .Values.envOfConfigmaps.envDB.configMapKeyRef.name }}
+                  name: {{ .Values.metadata.name }} 
                   key: {{ .Values.envOfConfigmaps.envDB.configMapKeyRef.key }}
             - name: {{ .Values.envOfConfigmaps.envSCHEMA.name }} 
               valueFrom:
                 configMapKeyRef:
-                  name: {{ .Values.envOfConfigmaps.envSCHEMA.configMapKeyRef.name }}
+                  name: {{ .Values.metadata.name }} 
                   key: {{ .Values.envOfConfigmaps.envSCHEMA.configMapKeyRef.key }}
             - name: {{ .Values.envOfConfigmaps.envMODEL.name }} 
               valueFrom:
                 configMapKeyRef:
-                  name: {{ .Values.envOfConfigmaps.envMODEL.configMapKeyRef.name }}
+                  name: {{ .Values.metadata.name }} 
                   key: {{ .Values.envOfConfigmaps.envMODEL.configMapKeyRef.key }}
           ports:
             - containerPort: {{ .Values.image.ports.containerPort }} 
-      volumes:
-        - name: config-volume
-          configMap:
-            name: mount
-            items:
-            - key: keys.txt
-              path: keys.txt

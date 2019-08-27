@@ -6,7 +6,7 @@ metadata:
     openshift.io/host.generated: "true"
   labels:
     app: {{ .Values.routes.name }}
-  name: {{ .Values.routes.name }}
+  name: "{{ .Values.metadata.name }}"
   namespace: {{ .Values.namespace }}
 spec:
   host: {{ .Values.routes.host }}

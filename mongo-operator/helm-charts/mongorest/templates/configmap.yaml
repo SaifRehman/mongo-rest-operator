@@ -3,7 +3,7 @@ kind: ConfigMap
 metadata:
   labels:
     app: "{{ .Values.metadata.name }}"
-  name: mongo-rest
+  name: "{{ .Values.metadata.name }} "
   namespace: "{{ .Values.namespace }}"
 data:
   MONGOPORT: "{{ .Values.mongodb.port }}"

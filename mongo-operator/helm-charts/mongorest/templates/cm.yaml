@@ -1,7 +1,0 @@
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: mount
-data:
-  keys.txt: |
-    "{{ .Values.cm.data }}"

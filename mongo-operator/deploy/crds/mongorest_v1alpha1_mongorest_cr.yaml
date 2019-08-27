@@ -14,7 +14,7 @@ spec:
     endpoint: "studentGrade"
     db: "sampledb"
     schema: "Student"
-    model: "{Username':{'type':'String'},'Task':{'type':'String'},'Completed':{'type':'Boolean'},'Time':{'type':'String'}}"
+    model: "{'Username':{'type':'String'},'Task':{'type':'String'},'Completed':{'type':'Boolean'},'Time':{'type':'String'}}"
   buildconfig:
     uri: "https://github.com/SaifRehman/openshift-microservice.git"
   routes:

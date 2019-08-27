@@ -98,11 +98,11 @@ spec:
                 configMapKeyRef:
                   name: {{ .Values.envOfConfigmaps.envSCHEMA.configMapKeyRef.name }}
                   key: {{ .Values.envOfConfigmaps.envSCHEMA.configMapKeyRef.key }}
-            - name: {{ .Values.envOfConfigmaps.envPATHOF.name }} 
+            - name: {{ .Values.envOfConfigmaps.envMODEL.name }} 
               valueFrom:
                 configMapKeyRef:
-                  name: {{ .Values.envOfConfigmaps.envPATHOF.configMapKeyRef.name }}
-                  key: {{ .Values.envOfConfigmaps.envPATHOF.configMapKeyRef.key }}
+                  name: {{ .Values.envOfConfigmaps.envMODEL.configMapKeyRef.name }}
+                  key: {{ .Values.envOfConfigmaps.envMODEL.configMapKeyRef.key }}
           ports:
             - containerPort: {{ .Values.image.ports.containerPort }} 
       volumes:

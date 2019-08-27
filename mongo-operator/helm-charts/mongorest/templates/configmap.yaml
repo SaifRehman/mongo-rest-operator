@@ -11,4 +11,4 @@ data:
   ENDPOINT: "{{ .Values.mongodb.endpoint }}"
   DB: "{{ .Values.mongodb.db }}"
   SCHEMA: "{{ .Values.mongodb.schema }}"
-  PATHOF: "{{ .Values.mongodb.pathof }}"
+  MODEL: "{{ .Values.mongodb.model }}"

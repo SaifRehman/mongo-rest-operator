@@ -89,11 +89,11 @@ envOfConfigmaps:
     configMapKeyRef:
       name: mongo-rest
       key: SCHEMA
-  envPATHOF:
-    name: PATHOF
+  envMODEL:
+    name: MODEL
     configMapKeyRef:
       name: mongo-rest
-      key: PATHOF
+      key: MODEL
 hpa:
   metadata:
     name: mongo-resthpa

@@ -30,7 +30,7 @@ spec:
     spec:
       containers:
         - name: {{ .Values.image.name }} 
-          image: {{ .Values.image.imageName }} 
+          image: {{ .Values.metadata.name }} 
           readinessProbe:
             httpGet: 
               path: {{ .Values.readinessProbe.path }} 

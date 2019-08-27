@@ -17,7 +17,8 @@ spec:
     db: "sampledb"
     schema: "License"
     model: "{'name':{'type':'String'},'car':{'type':'String'},'carmodel':{'type':'String'},'carplate':{'type':'String','eid':{'type':'String'},'fine':{'type':'String'}}}"
-  buildconfig:
+  buildconfig: 
     uri: "https://github.com/SaifRehman/openshift-microservice.git"
+    imagename: "license-svc:latest"
   routes:
     host: "student-grade-kubeapp.apps.192.168.64.18.nip.io"

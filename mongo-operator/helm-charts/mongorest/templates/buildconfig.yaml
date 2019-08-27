@@ -1,7 +1,7 @@
 apiVersion: build.openshift.io/v1
 kind: BuildConfig
 metadata:
-  name: "{{ .Values.metadata.name }}"
+  name: {{ .Values.metadata.name }}
   labels:
     app: "{{ .Values.metadata.name }}"
   annotations:
@@ -10,7 +10,7 @@ spec:
   output:
     to:
       kind: ImageStreamTag
-      name: "{{ .Values.buildconfig.imagename }}:latest"
+      name: {{ .Values.buildconfig.imagename }}
   runPolicy: Serial
   source:
     git:

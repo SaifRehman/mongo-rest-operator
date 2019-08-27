@@ -103,6 +103,11 @@ spec:
                 configMapKeyRef:
                   name: {{ .Values.envOfConfigmaps.envPATHOF.configMapKeyRef.name }}
                   key: {{ .Values.envOfConfigmaps.envPATHOF.configMapKeyRef.key }}
+            - name: {{ .Values.envOfConfigmaps.envDATAMODEL.name }} 
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ .Values.envOfConfigmaps.envDATAMODEL.configMapKeyRef.name }}
+                  key: {{ .Values.envOfConfigmaps.envDATAMODEL.configMapKeyRef.key }}
           ports:
             - containerPort: {{ .Values.image.ports.containerPort }} 
       volumes:

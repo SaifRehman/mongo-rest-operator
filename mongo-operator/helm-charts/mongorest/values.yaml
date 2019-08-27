@@ -11,9 +11,10 @@ mongodb:
   db: "sampledb"
   schema: "Todo"
   pathof: "./keys.txt"
+  datamodel: '{"Username":{"type":"String"},"Task":{"type":"String"},"Completed":{"type":"Boolean"},"Time":{"type":"String"}}'
 
 cm:
-  data: '{"Username":{"type":String},"Task":{"type":String},"Completed":{"type":Boolean},"Time":{"type":String}}'
+  data: '{"Username":{"type":"String"},"Task":{"type":"String"},"Completed":{"type":"Boolean"},"Time":{"type":"String"}}'
 metadata:
  name: mongo-rest 
  label: mongo-rest
@@ -94,6 +95,11 @@ envOfConfigmaps:
     configMapKeyRef:
       name: mongo-rest
       key: PATHOF
+  envDATAMODEL:
+    name: DATAMODEL
+    configMapKeyRef:
+      name: mongo-rest
+      key: DATAMODEL
 hpa:
   metadata:
     name: mongo-resthpa

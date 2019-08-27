@@ -12,3 +12,4 @@ data:
   DB: "{{ .Values.mongodb.db }}"
   SCHEMA: "{{ .Values.mongodb.schema }}"
   PATHOF: "{{ .Values.mongodb.pathof }}"
+  DATAMODEL: "{{ .Values.mongodb.datamodel }}"

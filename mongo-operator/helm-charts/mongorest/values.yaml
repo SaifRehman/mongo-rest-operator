@@ -1,0 +1,150 @@
+replicaCount: 2
+namespace: "kubeapp"
+
+mongodb:
+  host: "mongodb.kubeapp"
+  port: "27017"
+  username: "YWRtaW4="
+  password: "YWRtaW4="
+  secret: "aGVsbG8="
+  endpoint: "listTodo"
+  db: "sampledb"
+  schema: "Todo"
+  pathof: "/etc/config/keys.json"
+
+cm:
+  data: '{"Username":{"type":String},"Task":{"type":String},"Completed":{"type":Boolean},"Time":{"type":String}}'
+metadata:
+ name: mongo-rest 
+ label: mongo-rest
+readinessProbe:
+  path: /healthz
+  port: 7000
+  initialDelaySeconds: 10
+  timeoutSeconds: 2
+  periodSeconds: 10
+
+livenessProbe:
+  path: /healthz
+  port: 7000
+  initialDelaySeconds: 10
+  timeoutSeconds: 2
+  periodSeconds: 10
+image:
+  name: "mongo-rest"
+  imageName: "mongo-rest" 
+  imagePullPolicy: Always
+  ports:
+    containerPort: 7000
+  requests:
+    cpu: "200m"
+    memory: "200Mi"
+  limits:
+    cpu: "800m"
+    memory: "210Mi"
+  maxSurge: 1
+  maxUnavailable: 0
+  lifecycle:
+    preStop:
+      command: ["/bin/bash", "-c", "sleep 20"]
+
+imagestream:
+  name:  mongo-rest
+
+envOfSecrets:
+  envMONGOUSERNAME:
+    name: MONGOUSERNAME
+    secretKeyRef:
+      name: mongo-rest
+      key: MONGOUSERNAME
+  envMONGOPASSWORD:
+    name: MONGOPASSWORD
+    secretKeyRef:
+      name: mongo-rest
+      key: MONGOPASSWORD
+
+envOfConfigmaps:
+  envMONGOPORT:
+    name: MONGOPORT
+    configMapKeyRef:
+      name: mongo-rest
+      key: MONGOPORT
+  envHOSTNAMEMONGODB:
+    name: HOSTNAMEMONGODB
+    configMapKeyRef:
+      name: mongo-rest
+      key: HOSTNAMEMONGODB
+  envENDPOINT:
+    name: ENDPOINT
+    configMapKeyRef:
+      name: mongo-rest
+      key: ENDPOINT
+  envDB:
+    name: DB
+    configMapKeyRef:
+      name: mongo-rest
+      key: DB
+  envSCHEMA:
+    name: SCHEMA
+    configMapKeyRef:
+      name: mongo-rest
+      key: SCHEMA
+  envPATHOF:
+    name: PATHOF
+    configMapKeyRef:
+      name: mongo-rest
+      key: PATHOF
+hpa:
+  metadata:
+    name: mongo-resthpa
+  spec:
+    maxReplicas: 10
+    minReplicas: 2
+  metrics:
+    pods:
+      targetAverageValue: 20
+    resource:
+      name: cpu
+      targetAverageUtilization: 50
+    memory:
+      targetAverageUtilization: 50
+  scaleTargetRef:  
+    name: mongo-rest
+
+service:
+  serviceMetadata:
+    name: mongo-rest
+    labels:
+      app: mongo-rest
+  selector:
+    selectorName: mongo-rest
+  servicePortConfiguration:
+    protocol: TCP
+    name: mongo-rest
+    type: ClusterIP
+    port: 7000
+    targetPort: 7000
+
+
+imagestream:
+  name:  mongo-rest
+  label: mongo-rest
+
+buildconfig:
+  uri: "https://github.com/SaifRehman/openshift-microservice.git"
+  branch: "master"
+  name: "mongo-rest"
+  imagename: "mongo-rest:latest"
+  secret1: $(head -c 24 /dev/random | base64)
+  secret2: $(head -c 24 /dev/random | base64)
+
+
+routes:
+  host: "mongo-rest-kubeapp.apps.192.168.64.17.nip.io"
+  targetPort: 7000
+  name: mongo-rest
+  weight: 100
+
+
+nameOverride: ""
+fullnameOverride: ""

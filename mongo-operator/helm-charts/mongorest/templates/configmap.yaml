@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  labels:
+    app: "{{ .Values.metadata.name }}"
+  name: mongo-rest
+  namespace: "{{ .Values.namespace }}"
+data:
+  MONGOPORT: "{{ .Values.mongodb.port }}"
+  HOSTNAMEMONGODB: "{{ .Values.mongodb.host }}"
+  ENDPOINT: "{{ .Values.mongodb.endpoint }}"
+  DB: "{{ .Values.mongodb.db }}"
+  SCHEMA: "{{ .Values.mongodb.schema }}"
+  PATHOF: "{{ .Values.mongodb.pathof }}"

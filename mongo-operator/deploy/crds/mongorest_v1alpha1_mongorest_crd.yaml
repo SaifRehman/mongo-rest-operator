@@ -1,0 +1,19 @@
+apiVersion: apiextensions.k8s.io/v1beta1
+kind: CustomResourceDefinition
+metadata:
+  name: mongorests.mongorest.ibm.com
+spec:
+  group: mongorest.ibm.com
+  names:
+    kind: Mongorest
+    listKind: MongorestList
+    plural: mongorests
+    singular: mongorest
+  scope: Namespaced
+  subresources:
+    status: {}
+  version: v1alpha1
+  versions:
+  - name: v1alpha1
+    served: true
+    storage: true

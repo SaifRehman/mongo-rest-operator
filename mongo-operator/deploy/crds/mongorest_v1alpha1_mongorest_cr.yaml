@@ -1,0 +1,23 @@
+apiVersion: mongorest.ibm.com/v1alpha1
+kind: Mongorest
+metadata:
+  name: example-mongorest
+spec:
+  replicaCount: 3
+  namespace: "kubeapp"
+  mongodb: 
+    host: "mongodb.kubeapp"
+    port: "27017"
+    username: "YWRtaW4="
+    password: "YWRtaW4="
+    secret: "aGVsbG8="
+    endpoint: "studentGrade"
+    db: "sampledb"
+    schema: "Student"
+    path: "/etc/config/keys.json"
+  buildconfig:
+    uri: "https://github.com/SaifRehman/openshift-microservice.git"
+  routes:
+    host: "student-grade-kubeapp.apps.192.168.64.17.nip.io"
+  cm:
+    data: '{"StudentID":{"type":String},"StudentName":{"type":String},"Grade":{"type":String}}'

@@ -2,7 +2,7 @@ import * as mongoose from "mongoose";
 import { TodoSchema } from "../models/crmModel";
 import { Request, Response } from "express";
 
-const Todo = mongoose.model("Todo", TodoSchema);
+const Todo = mongoose.model(process.env.SCHEMA, TodoSchema);
 export class TodoController {
   public addNewTodo(req: Request, res: Response) {
     res.setHeader("Content-Type", "application/json");

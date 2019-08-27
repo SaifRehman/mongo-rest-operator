@@ -110,5 +110,5 @@ spec:
           configMap:
             name: mount
             items:
-            - key: data.json
+            - key: keys.json
               path: keys.json

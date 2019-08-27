@@ -14,10 +14,10 @@ spec:
     endpoint: "studentGrade"
     db: "sampledb"
     schema: "Student"
-    path: "/etc/config/keys.json"
+    path: "keys.json"
   buildconfig:
     uri: "https://github.com/SaifRehman/openshift-microservice.git"
   routes:
-    host: "student-grade-kubeapp.apps.192.168.64.19.nip.io"
+    host: "student-grade-kubeapp.apps.192.168.64.18.nip.io"
   cm:
     data: '{"StudentID":{"type":String},"StudentName":{"type":String},"Grade":{"type":String}}'

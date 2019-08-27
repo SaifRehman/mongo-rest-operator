@@ -9,16 +9,13 @@ spec:
     name: car-svc
   mongodb: 
     host: "mongodb.kubeapp"
-    port: "27017"
     username: "YWRtaW4="
     password: "YWRtaW4="
-    secret: "aGVsbG8="
     endpoint: "license"
     db: "sampledb"
     schema: "License"
     model: "{'name':{'type':'String'},'car':{'type':'String'},'carmodel':{'type':'String'},'carplate':{'type':'String','eid':{'type':'String'},'fine':{'type':'String'}}}"
   buildconfig: 
-    uri: "https://github.com/SaifRehman/openshift-microservice.git"
     imagename: "car-svc:latest"
   routes:
     host: "car-svc-kubeapp.apps.192.168.64.18.nip.io"

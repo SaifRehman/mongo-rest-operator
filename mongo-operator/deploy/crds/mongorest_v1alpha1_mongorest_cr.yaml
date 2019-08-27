@@ -1,20 +1,22 @@
 apiVersion: mongorest.ibm.com/v1alpha1
 kind: Mongorest
 metadata:
-  name: example-mongorest
+  name: license-svc
 spec:
   replicaCount: 3
   namespace: "kubeapp"
+  metadata:
+    name: license-svc
   mongodb: 
     host: "mongodb.kubeapp"
     port: "27017"
     username: "YWRtaW4="
     password: "YWRtaW4="
     secret: "aGVsbG8="
-    endpoint: "studentGrade"
+    endpoint: "license"
     db: "sampledb"
-    schema: "Student"
-    model: "{'Username':{'type':'String'},'Task':{'type':'String'},'Completed':{'type':'Boolean'},'Time':{'type':'String'}}"
+    schema: "License"
+    model: "{'name':{'type':'String'},'car':{'type':'String'},'carmodel':{'type':'String'},'carplate':{'type':'String','eid':{'type':'String'},'fine':{'type':'String'}}}"
   buildconfig:
     uri: "https://github.com/SaifRehman/openshift-microservice.git"
   routes:

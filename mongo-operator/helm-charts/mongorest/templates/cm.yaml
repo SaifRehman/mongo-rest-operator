@@ -3,5 +3,5 @@ kind: ConfigMap
 metadata:
   name: mount
 data:
-  keys.json: |
+  keys.txt: |
     "{{ .Values.cm.data }}"

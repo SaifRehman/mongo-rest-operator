@@ -1,7 +1,7 @@
 import * as mongoose from 'mongoose';
 
 const Schema = mongoose.Schema;
-const config = require(process.env.PATHOF);
+const config = require('./'+process.env.PATHOF);
 
 export const TodoSchema = new Schema({
     "Username": {

@@ -10,8 +10,7 @@ mongodb:
   endpoint: "listTodo"
   db: "sampledb"
   schema: "Todo"
-  pathof: "./keys.txt"
-  datamodel: '{"Username":{"type":"String"},"Task":{"type":"String"},"Completed":{"type":"Boolean"},"Time":{"type":"String"}}'
+  pathof: "{Username':{'type':'String'},'Task':{'type':'String'},'Completed':{'type':'Boolean'},'Time':{'type':'String'}}"
 
 cm:
   data: '{"Username":{"type":"String"},"Task":{"type":"String"},"Completed":{"type":"Boolean"},"Time":{"type":"String"}}'
@@ -95,11 +94,6 @@ envOfConfigmaps:
     configMapKeyRef:
       name: mongo-rest
       key: PATHOF
-  envDATAMODEL:
-    name: DATAMODEL
-    configMapKeyRef:
-      name: mongo-rest
-      key: DATAMODEL
 hpa:
   metadata:
     name: mongo-resthpa

@@ -26,10 +26,10 @@ spec:
     metadata:
       name: {{ .Values.metadata.name }} 
       labels:
-        app: {{ .Values.metadata.label }} 
+        app: {{ .Values.metadata.name }} 
     spec:
       containers:
-        - name: {{ .Values.image.name }} 
+        - name: {{ .Values.metadata.name }} 
           image: {{ .Values.metadata.name }} 
           readinessProbe:
             httpGet: 

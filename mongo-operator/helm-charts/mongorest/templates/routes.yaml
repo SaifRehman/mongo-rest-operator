@@ -5,7 +5,7 @@ metadata:
     openshift.io/generated-by: OpenShiftWebConsole
     openshift.io/host.generated: "true"
   labels:
-    app: {{ .Values.routes.name }}
+    app: "{{ .Values.routes.name }}"
   name: "{{ .Values.metadata.name }}"
   namespace: {{ .Values.namespace }}
 spec:

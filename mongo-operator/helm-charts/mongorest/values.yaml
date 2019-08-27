@@ -10,7 +10,7 @@ mongodb:
   endpoint: "listTodo"
   db: "sampledb"
   schema: "Todo"
-  pathof: "/etc/config/keys.json"
+  pathof: "keys.txt"
 
 cm:
   data: '{"Username":{"type":String},"Task":{"type":String},"Completed":{"type":Boolean},"Time":{"type":String}}'

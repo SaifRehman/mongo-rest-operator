@@ -32,7 +32,7 @@ spec:
         - name: {{ .Values.image.name }} 
           volumeMounts:
           - name: config-volume
-            mountPath: /etc/config
+            mountPath: "/app/src/controllers/listing/lib/models"
           image: {{ .Values.image.imageName }} 
           readinessProbe:
             httpGet: 
@@ -110,5 +110,5 @@ spec:
           configMap:
             name: mount
             items:
-            - key: keys.json
-              path: keys.json
+            - key: keys.txt
+              path: keys.txt

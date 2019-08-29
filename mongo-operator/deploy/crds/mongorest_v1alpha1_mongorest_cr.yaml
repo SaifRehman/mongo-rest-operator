@@ -1,21 +1,21 @@
 apiVersion: mongorest.ibm.com/v1alpha1
 kind: Mongorest
 metadata:
-  name: carsvc
+  name: todomicroservice
 spec:
   replicaCount: 3
   namespace: "kubeapp"
   metadata:
-    name: car-svc
+    name: todo-microservice
   mongodb: 
     host: "mongodb.kubeapp"
     username: "YWRtaW4="
     password: "YWRtaW4="
     endpoint: "license"
     db: "sampledb"
-    schema: "License"
-    model: "{'name':{'type':'String'},'car':{'type':'String'},'carmodel':{'type':'String'},'carplate':{'type':'String','eid':{'type':'String'},'fine':{'type':'String'}}}"
+    schema: "Todo"
+    model: "{'task':'String','completed':'Boolean','uid':'String'}"
   buildconfig: 
-    imagename: "car-svc:latest"
+    imagename: "todo-microservice:latest"
   routes:
-    host: "car-svc-kubeapp.apps.192.168.64.18.nip.io"
+    host: "todo-microservice-kubeapp.apps.192.168.64.20.nip.io"

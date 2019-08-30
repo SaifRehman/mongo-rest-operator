@@ -11,7 +11,7 @@ spec:
     host: "mongodb.kubeapp"
     username: "YWRtaW4="
     password: "YWRtaW4="
-    endpoint: "license"
+    endpoint: "todo"
     db: "sampledb"
     schema: "Todo"
     model: "{'task':'String','completed':'Boolean','uid':'String'}"

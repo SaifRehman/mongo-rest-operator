@@ -18,3 +18,43 @@
 </p>
 <br>
 Allows you to develop mongo microservices just by defining the yamls on a openshift cluster 
+
+## Install Operator on Openshift, and creating your first mongo CRUD microservice in minutes!
+
+1. clone the repo
+```
+$ git clone https://github.com/SaifRehman/mongo-rest-operator.git
+```
+2. install ***serviceaccount***, ***rolebinding***, ***role***, ***crd***, and ***operator***
+```
+$ oc apply -f deploy/service_account.yaml
+$ oc apply -f deploy/role.yaml
+$ oc apply -f deploy/role_binding.yaml
+$ oc apply -f deploy/operator.yaml
+$ oc apply -f deploy/crds/mongorest_v1alpha1_mongorest_crd.yaml
+```
+3. create mongorest yaml, example reservation microservice. This is a reservation microservice which performs crud operations on mongodb database to store firstname,  lastname, and uid. 
+``` YAML
+apiVersion: mongorest.ibm.com/v1alpha1
+kind: Mongorest
+metadata:
+  name: reservationmicroservice
+spec:
+  replicaCount: 3 #number of replica needed
+  namespace: "kubeapp"
+  metadata:
+    name: reservation-microservice
+  mongodb: 
+    host: "mongodb.kubeapp" # connection info of mongodb
+    username: "YWRtaW4="
+    password: "YWRtaW4="
+    endpoint: "reservation"
+    db: "sampledb"
+    schema: "Reservation"
+    model: "{'firstname':'String','lastname':'String','uid':'String'}" # model of your mongo schema
+  buildconfig: 
+    imagename: "reservation-microservice:latest"
+  routes:
+    host: "reservation-microservice-kubeapp.apps.192.168.64.21.nip.io"
+```
+4. Apply these YAML configuration

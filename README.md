@@ -56,6 +56,6 @@ spec:
   buildconfig: 
     imagename: "reservation-microservice:latest"
   routes:
-    host: "reservation-microservice-kubeapp.apps.192.168.64.21.nip.io"
+    host: "reservation-microservice-kubeapp.apps.192.168.64.21.nip.io"  # application route
 ```
 4. Apply these YAML configuration

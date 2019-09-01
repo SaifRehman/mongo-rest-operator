@@ -19,7 +19,7 @@
 <br>
 Allows you to develop mongo microservices just by defining the yamls on a openshift cluster 
 
-## Install Operator on Openshift, and creating your first mongo CRUD microservice in minutes!
+## Install Operator on Openshift
 
 1. clone the repo
 ```
@@ -33,7 +33,8 @@ $ oc apply -f deploy/role_binding.yaml
 $ oc apply -f deploy/operator.yaml
 $ oc apply -f deploy/crds/mongorest_v1alpha1_mongorest_crd.yaml
 ```
-3. create mongorest yaml, example reservation microservice. This is a reservation microservice which performs crud operations on mongodb database to store firstname,  lastname, and uid. 
+## Creat your first MongoDB CRUD Microservice in minutes!
+1. create mongorest yaml, example reservation microservice. This is a reservation microservice which performs crud operations on mongodb database to store firstname,  lastname, and uid. 
 ``` YAML
 apiVersion: mongorest.ibm.com/v1alpha1
 kind: Mongorest

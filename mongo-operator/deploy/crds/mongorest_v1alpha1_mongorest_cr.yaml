@@ -1,21 +1,21 @@
 apiVersion: mongorest.ibm.com/v1alpha1
 kind: Mongorest
 metadata:
-  name: todomicroservice
+  name: reservationmicroservice
 spec:
   replicaCount: 3
   namespace: "kubeapp"
   metadata:
-    name: todo-microservice
+    name: reservation-microservice
   mongodb: 
     host: "mongodb.kubeapp"
     username: "YWRtaW4="
     password: "YWRtaW4="
-    endpoint: "todo"
+    endpoint: "reservation"
     db: "sampledb"
-    schema: "Todo"
-    model: "{'task':'String','completed':'Boolean','uid':'String'}"
+    schema: "Reservation"
+    model: "{'firstname':'String','lastname':'String','uid':'String'}"
   buildconfig: 
-    imagename: "todo-microservice:latest"
+    imagename: "reservation-microservice:latest"
   routes:
-    host: "todo-microservice-kubeapp.apps.192.168.64.20.nip.io"
+    host: "reservation-microservice-kubeapp.apps.192.168.64.21.nip.io"

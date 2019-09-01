@@ -3,7 +3,7 @@
   <br>
   <a href="https://github.com/SaifRehman/mongo-rest-operator"><img src="https://thumbor.forbes.com/thumbor/960x0/https%3A%2F%2Fblogs-images.forbes.com%2Fjanakirammsv%2Ffiles%2F2018%2F05%2Frh-os.jpg" alt="openshift" width="IBM"></a>
   <br>
-      Kubernitized Blockchain Tinder app on IBM Cloud Private
+      Mongorest operator for Openshift
   <br>
   <br>
 </h1>

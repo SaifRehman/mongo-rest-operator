@@ -4,11 +4,11 @@ metadata:
   name: reservationmicroservice
 spec:
   replicaCount: 3
-  namespace: "kubeapp"
+  namespace: "cumulusbank"
   metadata:
     name: reservation-microservice
   mongodb: 
-    host: "mongodb.kubeapp"
+    host: "mongodb.cumulusbank"
     username: "YWRtaW4="
     password: "YWRtaW4="
     endpoint: "reservation"
@@ -18,4 +18,4 @@ spec:
   buildconfig: 
     imagename: "reservation-microservice:latest"
   routes:
-    host: "reservation-microservice-kubeapp.apps.192.168.64.21.nip.io"
+    host: "reservation-microservice-cumulusbank.apps.192.168.64.27.nip.io"

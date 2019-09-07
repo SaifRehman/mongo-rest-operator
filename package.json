@@ -53,6 +53,7 @@
     "express-session": "^1.15.6",
     "injection-js": "^2.2.1",
     "mongoose": "^5.3.12",
+    "prom-client": "^11.5.3",
     "react": "^16.6.0",
     "reflect-metadata": "^0.1.12",
     "rxjs": "^6.3.3",
